@@ -25,9 +25,8 @@ RUN set -x \
 	&& wget --max-redirect=30 "${DLURL}/main/etc/entry.sh" -O "${HOMEDIR}/entry.sh" \
 	&& { \
 		echo '@ShutdownOnFailedCommand 1'; \
-		# echo '@NoPromptForPassword 1'; \
-		echo 'login ${STEAMUSERNAME}'; \
-		echo 'password ${STEAMPASSWORD}'; \
+		echo '@NoPromptForPassword 1'; \
+		echo 'login ${STEAMUSERNAME}:${STEAMPASSWORD}'; \
 		echo 'force_install_dir '"${STEAMAPPDIR}"''; \
 		echo 'app_update '"${STEAMAPPID}"''; \
 		echo 'quit'; \
