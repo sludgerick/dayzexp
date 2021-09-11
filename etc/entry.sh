@@ -1,7 +1,7 @@
 #!/bin/bash
 mkdir -p "${STEAMAPPDIR}" || true
 
-bash "${STEAMCMDDIR}/steamcmd.sh" +login "${STEAMUSERNAME}: \
+bash "${STEAMCMDDIR}/steamcmd.sh" +login "${STEAMUSERNAME}": \
 		+password "${STEAMPASSWORD}" \
 		+force_install_dir "${STEAMAPPDIR}" \
 		+app_update "${STEAMAPPID}" \
