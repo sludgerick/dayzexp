@@ -1,0 +1,11 @@
+---
+version: "3.9"
+services:
+  dayz:
+    image: "sludgerick/dayzexp"
+    build: .
+#     ports:
+#       - "2302:2302"
+#       - "2303:2303"
+#       - "27016:27016"
+
