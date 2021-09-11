@@ -7,8 +7,8 @@ LABEL maintainer="sludgerick@ycore.net"
 
 ENV STEAMAPPID 1042420
 ENV STEAMAPP dayzserver
-ENV STEAMUSERNAME steamuiaeuser
-ENV STEAMPASSWORD secure-password
+ENV STEAMUSERNAME "${STEAMUSERNAME}"
+ENV STEAMPASSWORD "${STEAMPASSWORD}"
 ENV STEAMAPPDIR "${HOMEDIR}/${STEAMAPP}-exp"
 ENV DLURL https://raw.githubusercontent.com/sludgerick/dayzexp
 
@@ -26,7 +26,7 @@ RUN set -x \
 	&& { \
 		echo '@ShutdownOnFailedCommand 1'; \
 		echo '@NoPromptForPassword 1'; \
-		echo 'login ${STEAMUSERNAME}:${STEAMPASSWORD}'; \
+		echo 'login ${STEAMUSERNAME} ${STEAMPASSWORD}'; \
 		echo 'force_install_dir '"${STEAMAPPDIR}"''; \
 		echo 'app_update '"${STEAMAPPID}"''; \
 		echo 'quit'; \
