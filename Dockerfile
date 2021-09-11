@@ -24,6 +24,7 @@ RUN set -x \
 	&& mkdir -p "${STEAMAPPDIR}" \
 	&& wget --max-redirect=30 "${DLURL}/main/etc/entry.sh" -O "${HOMEDIR}/entry.sh" \
 	&& { \
+	    echo '@sSteamCmdForcePlatformType Linux'; \
 		echo '@ShutdownOnFailedCommand 1'; \
 		echo '@NoPromptForPassword 1'; \
 		echo 'login ${STEAMUSERNAME} ${STEAMPASSWORD}'; \
