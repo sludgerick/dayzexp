@@ -23,6 +23,8 @@ RUN set -x \
 		lib32z1=1:1.2.11.dfsg-1 \
 	&& mkdir -p "${STEAMAPPDIR}" \
 	&& wget --max-redirect=30 "${DLURL}/main/etc/entry.sh" -O "${HOMEDIR}/entry.sh" \
+	&& echo DEBUG STEAMUSERNAME: "${STEAMUSERNAME}" \
+	&& echo DEBUG STEAMPASSWORD: "${STEAMPASSWORD}" \
 	&& { \
 		echo 'login '"${STEAMUSERNAME}"' '"${STEAMPASSWORD}"''; \
 		echo '@sSteamCmdForcePlatformType Linux'; \
