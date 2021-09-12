@@ -27,7 +27,7 @@ RUN set -x \
 	    echo '@sSteamCmdForcePlatformType Linux'; \
 		echo '@ShutdownOnFailedCommand 1'; \
 		echo '@NoPromptForPassword 1'; \
-		echo 'login '${STEAMUSERNAME}' '${STEAMPASSWORD}''; \
+		echo 'login '"${STEAMUSERNAME}"' '"${STEAMPASSWORD}"''; \
 		echo 'force_install_dir '"${STEAMAPPDIR}"''; \
 		echo 'app_update '"${STEAMAPPID}"''; \
 		echo 'quit'; \
