@@ -2,9 +2,9 @@
 mkdir -p "${STEAMAPPDIR}" || true
 
 bash "${STEAMCMDDIR}/steamcmd.sh" +@sSteamCmdForcePlatformType Linux \
-        +login "${STEAMUSERNAME} ${STEAMPASSWORD}" \
+        +login "${STEAMUSERNAME}" "${STEAMPASSWORD}" \
 		+force_install_dir "${STEAMAPPDIR}" \
-		+app_update "${STEAMAPPID}" \
+		+app_update "${STEAMAPPID}" validate \
 		+quit
 
 ## this is an example on how to deal with config files
