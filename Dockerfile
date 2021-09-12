@@ -25,11 +25,9 @@ RUN set -x \
 	&& wget --max-redirect=30 "${DLURL}/main/etc/entry.sh" -O "${HOMEDIR}/entry.sh" \
 	&& { \
 	    echo '@sSteamCmdForcePlatformType Linux'; \
-		echo '@ShutdownOnFailedCommand 1'; \
-		echo '@NoPromptForPassword 1'; \
 		echo 'login '"${STEAMUSERNAME}"' '"${STEAMPASSWORD}"''; \
 		echo 'force_install_dir '"${STEAMAPPDIR}"''; \
-		echo 'app_update '"${STEAMAPPID}"''; \
+		echo 'app_update '"${STEAMAPPID}"' validate'; \
 		echo 'quit'; \
 	   } > "${HOMEDIR}/${STEAMAPP}_update.txt" \
 	&& chmod +x "${HOMEDIR}/entry.sh" \
