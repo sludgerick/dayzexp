@@ -24,7 +24,7 @@ RUN set -x \
 	&& mkdir -p "${STEAMAPPDIR}" \
 	&& wget --max-redirect=30 "${DLURL}/main/etc/entry.sh" -O "${HOMEDIR}/entry.sh" \
 	&& { \
-	    echo '@sSteamCmdForcePlatformType Linux'; \
+		echo '@sSteamCmdForcePlatformType Linux'; \
 		echo 'login '"${STEAMUSERNAME}"' '"${STEAMPASSWORD}"''; \
 		echo 'force_install_dir '"${STEAMAPPDIR}"''; \
 		echo 'app_update '"${STEAMAPPID}"' validate'; \
@@ -69,7 +69,7 @@ CMD ["bash", "entry.sh"]
 
 # Expose ports
 EXPOSE 2302:2302/udp \
-	2303:2303/udp \
-	2304:2304/udp \
-    36533:36533/tcp
+  2303:2303/udp \
+  2304:2304/udp \
+  36533:36533/tcp
 
