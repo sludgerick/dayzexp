@@ -9,5 +9,7 @@ services:
 #       - "2303:2303"
 #       - "27016:27016"
     environment:
+        - STEAMUSERNAME="$STEAMUSERNAME"
+        - STEAMPASSWORD="$STEAMPASSWORD"
         - PROFILEDIR="profile1"
         - PORT="2302"
