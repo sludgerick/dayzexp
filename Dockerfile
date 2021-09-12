@@ -24,8 +24,8 @@ RUN set -x \
 	&& mkdir -p "${STEAMAPPDIR}" \
 	&& wget --max-redirect=30 "${DLURL}/main/etc/entry.sh" -O "${HOMEDIR}/entry.sh" \
 	&& { \
+		echo "login ${STEAMUSERNAME} ${STEAMPASSWORD}"; \
 		echo '@sSteamCmdForcePlatformType Linux'; \
-		echo 'login '"${STEAMUSERNAME}"' '"${STEAMPASSWORD}"''; \
 		echo 'force_install_dir '"${STEAMAPPDIR}"''; \
 		echo 'app_update '"${STEAMAPPID}"' validate'; \
 		echo 'quit'; \
