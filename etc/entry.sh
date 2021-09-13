@@ -5,12 +5,13 @@ printf "%s\n" ${STEAMUSERNAME}
 printf "%s\n" ${STEAMPASSWORD}
 
 # bash "${STEAMCMDDIR}/steamcmd.sh" +runscript "${STEAMAPP}"_update.txt
+bash "${STEAMCMDDIR}/steamcmd.sh" +help +quit
 
-bash "${STEAMCMDDIR}/steamcmd" +@sSteamCmdForcePlatformType Linux \
-		+login ${STEAMUSERNAME} ${STEAMPASSWORD} \
- 		+force_install_dir "${STEAMAPPDIR}" \
- 		+app_update "${STEAMAPPID}" validate \
- 		+quit
+# bash "${STEAMCMDDIR}/steamcmd" +@sSteamCmdForcePlatformType Linux \
+# 		+login ${STEAMUSERNAME} ${STEAMPASSWORD} \
+#  		+force_install_dir "${STEAMAPPDIR}" \
+#  		+app_update "${STEAMAPPID}" validate \
+#  		+quit
 
 ## this is an example on how to deal with config files
 # # We assume that if the config is missing, that this is a fresh container
