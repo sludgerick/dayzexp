@@ -6,7 +6,7 @@ printf "%s\n" ${STEAMPASSWORD}
 
 # bash "${STEAMCMDDIR}/steamcmd.sh" +runscript "${STEAMAPP}"_update.txt
 
-bash "${STEAMCMDDIR}/steamcmd.sh" +@sSteamCmdForcePlatformType Linux \
+bash "${STEAMCMDDIR}/steamcmd" +@sSteamCmdForcePlatformType Linux \
 		+login ${STEAMUSERNAME} ${STEAMPASSWORD} \
  		+force_install_dir "${STEAMAPPDIR}" \
  		+app_update "${STEAMAPPID}" validate \
