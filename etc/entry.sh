@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 mkdir -p "${STEAMAPPDIR}" || true
 echo "${STEAMUSERNAME}"
 echo "${STEAMPASSWORD}"
