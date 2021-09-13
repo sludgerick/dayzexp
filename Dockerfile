@@ -5,6 +5,9 @@ FROM cm2network/steamcmd:root
 
 LABEL maintainer="sludgerick@ycore.net"
 
+ARG STEAMUSERNAME="${STEAMUSERNAME}"
+ARG STEAMPASSWORD="${STEAMPASSWORD}"
+
 ENV STEAMAPPID 1042420
 ENV STEAMAPP dayzserver
 ENV STEAMUSERNAME "${STEAMUSERNAME}"
@@ -26,8 +29,8 @@ RUN set -x \
 	&& echo DEBUG STEAMUSERNAME: "${STEAMUSERNAME}" \
 	&& echo DEBUG STEAMPASSWORD: "${STEAMPASSWORD}" \
 	&& { \
-		echo 'login '"${STEAMUSERNAME}"' '"${STEAMPASSWORD}"''; \
 		echo '@sSteamCmdForcePlatformType Linux'; \
+		echo 'login '"${STEAMUSERNAME}"' '"${STEAMPASSWORD}"''; \
 		echo 'force_install_dir '"${STEAMAPPDIR}"''; \
 		echo 'app_update '"${STEAMAPPID}"' validate'; \
 		echo 'quit'; \
