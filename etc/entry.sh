@@ -1,8 +1,8 @@
 #!/bin/bash
 set -x
 mkdir -p "${STEAMAPPDIR}" || true
-echo "${STEAMUSERNAME}"
-echo "${STEAMPASSWORD}"
+echo ${STEAMUSERNAME}
+echo ${STEAMPASSWORD}
 
 # bash "${STEAMCMDDIR}/steamcmd.sh" +runscript "${STEAMAPP}"_update.txt
 
