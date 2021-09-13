@@ -4,12 +4,13 @@ mkdir -p "${STEAMAPPDIR}" || true
 echo "${STEAMUSERNAME}"
 echo "${STEAMPASSWORD}"
 
-bash "${STEAMCMDDIR}/steamcmd.sh" +runscript "${STEAMAPP}"_update.txt
-# bash "${STEAMCMDDIR}/steamcmd.sh" +login "${STEAMUSERNAME}" "${STEAMPASSWORD}" \
-# 		+@sSteamCmdForcePlatformType Linux \
-# 		+force_install_dir "${STEAMAPPDIR}" \
-# 		+app_update "${STEAMAPPID}" validate \
-# 		+quit
+# bash "${STEAMCMDDIR}/steamcmd.sh" +runscript "${STEAMAPP}"_update.txt
+
+bash "${STEAMCMDDIR}/steamcmd.sh" +@sSteamCmdForcePlatformType Linux \
+		+login "${STEAMUSERNAME}" "${STEAMPASSWORD}" \
+ 		+force_install_dir "${STEAMAPPDIR}" \
+ 		+app_update "${STEAMAPPID}" validate \
+ 		+quit
 
 ## this is an example on how to deal with config files
 # # We assume that if the config is missing, that this is a fresh container
