@@ -30,16 +30,15 @@ RUN set -x \
 	&& echo DEBUG STEAMPASSWORD: "${STEAMPASSWORD}" \
 	&& chmod +x "${HOMEDIR}/entry.sh" \
 	&& chown -R "${USER}:${USER}" "${HOMEDIR}/entry.sh" "${STEAMAPPDIR}" \
+ 	&& { \
+ 		echo '@sSteamCmdForcePlatformType Linux'; \
+ 		echo 'login '"${STEAMUSERNAME}"' '"${STEAMPASSWORD}"''; \
+ 		echo 'force_install_dir '"${STEAMAPPDIR}"''; \
+ 		echo 'app_update '"${STEAMAPPID}"' validate'; \
+ 		echo 'quit'; \
+ 	   } > "${HOMEDIR}/${STEAMAPP}_update.txt" \
+ 	&& chown -R "${USER}:${USER}" "${HOMEDIR}/${STEAMAPP}_update.txt" \
 	&& rm -rf /var/lib/apt/lists/*
-
-# 	&& chown -R "${USER}:${USER}" "${HOMEDIR}/entry.sh" "${STEAMAPPDIR}" "${HOMEDIR}/${STEAMAPP}_update.txt" \
-# 	&& { \
-# 		echo '@sSteamCmdForcePlatformType Linux'; \
-# 		echo 'login '"${STEAMUSERNAME}"' '"${STEAMPASSWORD}"''; \
-# 		echo 'force_install_dir '"${STEAMAPPDIR}"''; \
-# 		echo 'app_update '"${STEAMAPPID}"' validate'; \
-# 		echo 'quit'; \
-# 	   } > "${HOMEDIR}/${STEAMAPP}_update.txt" \
 
 # ENV SRCDS_FPSMAX=300 \
 # 	SRCDS_TICKRATE=128 \
