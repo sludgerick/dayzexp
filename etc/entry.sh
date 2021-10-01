@@ -6,12 +6,14 @@ STEAMCMDDIR="/root/.steam/steamcmd"
 mkdir -p "${STEAMAPPDIR}" || true
 printf "%s\n" ${STEAMUSERNAME}
 printf "%s\n" ${STEAMPASSWORD}
+printf "%s\n" ${PORT}
+printf "%s\n" ${PROFILEDIR}
 
 # bash "${STEAMCMDDIR}/steamcmd.sh" +runscript "${STEAMAPP}"_update.txt
 # bash "${STEAMCMDDIR}/steamcmd.sh" +help +quit
 
 "${STEAMCMDDIR}/steamcmd.sh" +@sSteamCmdForcePlatformType Linux \
- 		+login anonymous \
+ 		+login "${STEAMUSERNAME}" \
   		+force_install_dir "${STEAMAPPDIR}" \
   		+app_update "${STEAMAPPID}" validate \
   		+quit
@@ -29,13 +31,18 @@ printf "%s\n" ${STEAMPASSWORD}
 # 	fi
 # fi
 
+# config installation
+cp ${PROFILEDIR}/serverDZ.cfg ${STEAMAPPDIR}/serverDZ.cfg
+chown ${USER}: ${STEAMAPPDIR}/serverDZ.cfg
+
 # server daemon start
 cd "${STEAMAPPDIR}"
 
-"${STEAMAPPDIR}/DayZServer" -config=serverDZ.cfg \
-                                  -port="${PORT}" \
-                                  -profile="${PROFILEDIR}" \
-                                  -dologs \
-                                  -adminlog \
-                                  -netlog \
-                                  -freezecheck
+bash -c "./DayZServer -config=serverDZ.cfg \
+                     -port=2302 \
+                     -profile="${PROFILEDIR}" \
+                     -dologs \
+                     -adminlog \
+                     -netlog \
+                     -freezecheck"
+

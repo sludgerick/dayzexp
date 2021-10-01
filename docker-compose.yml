@@ -3,13 +3,28 @@ version: "3.9"
 services:
   dayz:
     image: "sludgerick/dayzexp"
-    build: .
-#     ports:
-#       - "2302:2302"
-#       - "2303:2303"
-#       - "27016:27016"
-    environment:
+    build:
+      context: .
+      args:
         - STEAMUSERNAME="$STEAMUSERNAME"
         - STEAMPASSWORD="$STEAMPASSWORD"
         - PROFILEDIR="profile1"
         - PORT="2302"
+
+    entrypoint: ./entry.sh
+    env_file: .env
+    ports:
+#       - "2302:2302"
+#       - "2303:2303/udp"
+#       - "2304:2304/udp"
+#       - "27016:27016"
+#       - "36533:36533/tcp"
+        - "2302-2304:2302-2304/udp"
+        - "2302:2302/tcp"
+        - "27015-27030:27015-27030/tcp"
+        - "27036-27037:27036-27037/tcp"
+        - "27000-27031:27000-27031/udp"
+        - "36533:36533/tcp"
+    # environment:
+    volumes:
+      - ./profile1:/root/profile1:rw
