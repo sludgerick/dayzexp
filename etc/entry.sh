@@ -1,5 +1,8 @@
 #!/bin/bash
 set -x
+# use package steamcmd.sh
+# STEAMCMDDIR="/usr/lib/games/steam"
+STEAMCMDDIR="/root/.steam/steamcmd"
 mkdir -p "${STEAMAPPDIR}" || true
 printf "%s\n" ${STEAMUSERNAME}
 printf "%s\n" ${STEAMPASSWORD}
@@ -8,7 +11,7 @@ printf "%s\n" ${STEAMPASSWORD}
 # bash "${STEAMCMDDIR}/steamcmd.sh" +help +quit
 
 bash "${STEAMCMDDIR}/steamcmd.sh" +@sSteamCmdForcePlatformType Linux \
- 		+login ${STEAMUSERNAME} ${STEAMPASSWORD} \
+ 		+login anonymous \
   		+force_install_dir "${STEAMAPPDIR}" \
   		+app_update "${STEAMAPPID}" validate \
   		+quit
