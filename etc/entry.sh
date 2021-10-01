@@ -32,7 +32,7 @@ bash "${STEAMCMDDIR}/steamcmd.sh" +@sSteamCmdForcePlatformType Linux \
 # server daemon start
 cd "${STEAMAPPDIR}"
 
-bash "${STEAMAPPDIR}/DayZServer" -config=serverDZ.cfg \
+"${STEAMAPPDIR}/DayZServer" -config=serverDZ.cfg \
                                   -port="${PORT}" \
                                   -profile="${PROFILEDIR}" \
                                   -dologs \
