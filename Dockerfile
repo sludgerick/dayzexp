@@ -1,7 +1,7 @@
 ###########################################################
 # Dockerfile that builds a DayZ Experimental Server
 ###########################################################
-FROM cm2network/steamcmd:root
+FROM steamcmd/steamcmd:latest
 
 LABEL maintainer="sludgerick@ycore.net"
 
@@ -12,6 +12,7 @@ ENV STEAMAPPID 1042420
 ENV STEAMAPP dayzserver
 ENV STEAMUSERNAME "${STEAMUSERNAME}"
 ENV STEAMPASSWORD "${STEAMPASSWORD}"
+ENV HOMEDIR "${HOME}"
 ENV STEAMAPPDIR "${HOMEDIR}/${STEAMAPP}-exp"
 ENV DLURL https://raw.githubusercontent.com/sludgerick/dayzexp
 
@@ -23,7 +24,7 @@ RUN set -x \
 	&& apt-get install -y --no-install-recommends --no-install-suggests \
 		wget \
 		ca-certificates \
-		lib32z1=1:1.2.11.dfsg-1 \
+		lib32z1=1:1.2.11.dfsg-2ubuntu1.2 \
 	&& mkdir -p "${STEAMAPPDIR}" \
 	&& wget --max-redirect=30 "${DLURL}/main/etc/entry.sh" -O "${HOMEDIR}/entry.sh" \
 	&& echo DEBUG STEAMUSERNAME: "${STEAMUSERNAME}" \
