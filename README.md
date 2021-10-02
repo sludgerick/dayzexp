@@ -2,8 +2,9 @@
 
 ## what this repository does for you
 
-On startup the container checks if all server files are up to date and download
-via `steamcmd` if needed. This adds +45s to the container boot time.
+On startup the container checks if all server files are up to date and
+downloads it via `steamcmd` if needed. This adds +45s to the container boot
+time.
 
 ### initialization
 
