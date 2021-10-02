@@ -32,8 +32,16 @@ mkdir -p "${STEAMAPPDIR}" || true
 # 	fi
 # fi
 
-cp ${PROFILEDIR}/serverDZ.cfg ${STEAMAPPDIR}/serverDZ.cfg
-# chown ${USER}: ${STEAMAPPDIR}/serverDZ.cfg
+#cp ${PROFILEDIR}/serverDZ.cfg ${STEAMAPPDIR}/serverDZ.cfg
+if [[ -f ${PROFILEDIR}/serverDZ.cfg ]]; then
+	install -o ${USER} -g ${USER} -m 755 ${PROFILEDIR}/serverDZ.cfg ${STEAMAPPDIR}/serverDZ.cfg
+fi
+
+# WARNING: with the next line you add a dependency between `entry.sh` and `serverDZ.cfg`
+# pending on the configured mission
+if [[ -f ${PROFILEDIR}/messages.xml ]]; then
+	install -o ${USER} -g ${USER} -m 755 -p ${PROFILEDIR}/messages.xml ${STEAMAPPDIR}/mpmissions/dayzOffline.chernarusplus/db/messages.xml
+fi
 
 # server daemon start
 cd "${STEAMAPPDIR}"
