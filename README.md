@@ -29,13 +29,13 @@ host. You get a clean database (server wipe) on every container rebuild using
 the `--no-cache` option.
 
 ```bash
-# docker-compose build
+docker-compose build
 ```
 
 For debugging use:
 
 ```bash
-# time docker-compose build --build-arg STEAMUSERNAME=anonymous --no-cache
+time docker-compose build --build-arg STEAMUSERNAME=anonymous --no-cache
 ```
 
 ### starting
