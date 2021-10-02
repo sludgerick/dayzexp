@@ -28,3 +28,4 @@ services:
     # environment:
     volumes:
       - ./profile1:/root/profile1:rw
+    restart: on-failure
