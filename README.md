@@ -28,7 +28,7 @@ host. You get a clean database (server wipe) on every container rebuild using
 the `--no-cache` option.
 
 ```bash
-# time docker-compose build
+# docker-compose build
 ```
 
 For debugging use:
@@ -41,7 +41,7 @@ For debugging use:
 
 
 ```bash
-docker-compose up --build
+docker-compose up -d
 ```
 
 ## shutdown container
@@ -66,7 +66,15 @@ You can do it one line also:
 docker-compose up -d --build
 ```
 
-If the server is not working anymore and you need to restart without configuration changes
+A rebuild from scratch while running a server:
+
+```bash
+docker-compose down
+docker-compose build --no-cache
+docker-compose up -d
+```
+
+If the server is not working anymore and you need to restart without configuration changes:
 
 ```bash
 docker-compose restart
