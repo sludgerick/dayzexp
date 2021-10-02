@@ -1,12 +1,12 @@
-# dayz experimental linux server in a docker container
+# DayZ Experimental Linux Server in a Docker Container
 
-## what this repository does for you
+## What this Repository does for you
 
 On startup the container checks if all server files are up to date and
 downloads it via `steamcmd` if needed. This adds +45s to the container boot
 time.
 
-### initialization
+### Initialization
 
 To deploy this container you need to install `docker-compose`.
 
@@ -19,7 +19,7 @@ echo "PORT=2302" >> .env
 # cp $SRC profile1/serverDZ.cfg
 ```
 
-### container creation
+### Container creation
 
 When the container is build it installs steamcmd in an ubuntu environment and
 installs all dependencies dayz server needs.
@@ -35,10 +35,10 @@ docker-compose build
 For debugging use:
 
 ```bash
-time docker-compose build --build-arg STEAMUSERNAME=anonymous --no-cache
+# time docker-compose build --build-arg STEAMUSERNAME=anonymous --no-cache
 ```
 
-### starting
+### Starting Container
 
 Before starting the container it copies the server configuration file and
 `messages.xml` form the configured profile directory to the server file
@@ -48,13 +48,13 @@ installion directories.
 docker-compose up -d
 ```
 
-### shutdown container
+### Shutdown Container
 
 ```bash
 docker-compose stop
 ```
 
-### rebuild container
+### Rebuild Container
 
 There is currently no way to re-read the configuration while a server is running.
 You need to restart on every configurtion change.
