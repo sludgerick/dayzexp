@@ -44,13 +44,13 @@ For debugging use:
 docker-compose up -d
 ```
 
-## shutdown container
+### shutdown container
 
 ```bash
 docker-compose stop
 ```
 
-## rebuild container
+### rebuild container
 
 There is currently no way to re-read the configuration while a server is running.
 You need to restart on every configurtion change.
