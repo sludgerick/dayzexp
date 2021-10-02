@@ -1,9 +1,9 @@
-# dayzexp
+# dayz experimental linux server in a docker container
 
-## run dayz server in a docker container
+## what this repository does for you
 
-On startup the the container checks if all server files are up to date and
-download via steamcmd if needed. This add +45s to the container boot time.
+On startup the container checks if all server files are up to date and download
+via `steamcmd` if needed. This adds +45s to the container boot time.
 
 ### initialization
 
@@ -39,6 +39,9 @@ For debugging use:
 
 ### starting
 
+Before starting the container it copies the server configuration file and
+`messages.xml` form the configured profile directory to the server file
+installion directories.
 
 ```bash
 docker-compose up -d
