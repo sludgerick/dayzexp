@@ -2,14 +2,45 @@
 
 ## run dayz server in a docker container
 
+On startup the the container checks if all server files are up to date and
+download via steamcmd if needed. This add +45s to the container boot time.
+
+### initialization
+
+To deploy this container you need to install `docker-compose`.
+
 ```bash
 echo "STEAMUSERNAME=anonymous" > .env
 echo "PROFILEDIR=profile1" >> .env
-echo "PORT0=2302" >> .env
-# copy serverDZ.cfg from else where
-# cp $SRC profile1/serverDZ.cfg
+echo "PORT=2302" >> .env
 
+# copy serverDZ.cfg, messages.xml from else where
+# cp $SRC profile1/serverDZ.cfg
+```
+
+### container creation
+
+When the container is build it installs steamcmd in an ubuntu environment and
+installs all dependencies dayz server needs.
+
+Currently, databases which save the games server state is not exported to the
+host. You get a clean database (server wipe) on every container rebuild using
+the `--no-cache` option.
+
+```bash
+# time docker-compose build
+```
+
+For debugging use:
+
+```bash
 # time docker-compose build --build-arg STEAMUSERNAME=anonymous --no-cache
+```
+
+### starting
+
+
+```bash
 docker-compose up --build
 ```
 
@@ -21,17 +52,27 @@ docker-compose stop
 
 ## rebuild container
 
+There is currently no way to re-read the configuration while a server is running.
+You need to restart on every configurtion change.
+
 ```bash
-docker-compose stop
 docker-compose build
 docker-compose up -d
 ```
 
-## config changes
+You can do it one line also:
 
 ```bash
-vim profile1/serverDZ.cfg
-docker-compose build
-docker-compose up -d
+docker-compose up -d --build
 ```
 
+If the server is not working anymore and you need to restart without configuration changes
+
+```bash
+docker-compose restart
+```
+
+## Features that might be implemented in the future
+
+- multiple instance_ids
+- mod support
