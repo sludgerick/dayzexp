@@ -43,6 +43,22 @@ if [[ -f ${PROFILEDIR}/messages.xml ]]; then
 	install -o ${USER} -g ${USER} -m 755 -p ${PROFILEDIR}/messages.xml ${STEAMAPPDIR}/mpmissions/dayzOffline.chernarusplus/db/messages.xml
 fi
 
+# # Install {ban,priority,whitelist}.txt files for production server
+# # install ban.txt from profile dir
+# if [[ -f ${PROFILEDIR}/ban.txt ]]; then
+# 	install -o ${USER} -g ${USER} -m 644 -p ${PROFILEDIR}/ban.txt ${STEAMAPPDIR}/ban.txt
+# fi
+#
+# # install priority.txt from profile dir
+# if [[ -f ${PROFILEDIR}/priority.txt ]]; then
+# 	install -o ${USER} -g ${USER} -m 644 -p ${PROFILEDIR}/priority.txt ${STEAMAPPDIR}/priority.txt
+# fi
+#
+# # install whitelist.txt from profile dir
+# if [[ -f ${PROFILEDIR}/whitelist.txt ]]; then
+# 	install -o ${USER} -g ${USER} -m 644 -p ${PROFILEDIR}/whitelist.txt ${STEAMAPPDIR}/whitelist.txt
+# fi
+
 # server daemon start
 cd "${STEAMAPPDIR}"
 

@@ -41,9 +41,13 @@ For debugging use:
 
 ### Starting Container
 
-Before starting the container it copies the server configuration file and
-`messages.xml` form the configured profile directory to the server file
-installion directories.
+Before starting the container it copies the server configuration file
+`serverDZ.cfg`,, `messages.xml` from the configured profile directory to the
+server file installion directories.  Volumes `{ban,priority,whitelist}.txt`,
+`logs` and  `storage` and allow access to useful information and state of the
+world. If you want to access to `core` file or loot economy file remove the
+`storage´ volume entry and add the line for `serverfiles` in
+`docker-compose.yml`.
 
 ```bash
 docker-compose up -d
