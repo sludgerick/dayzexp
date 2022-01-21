@@ -64,6 +64,13 @@ RUN set -x \
 	&& chown -R "${USER}:${USER}" "${PROFILEDIR}" "${STEAMAPPDIR}" \
 	&& rm -rf /var/lib/apt/lists/*
 
+RUN set -x \
+	&& apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get -y install tzdata \
+	&& rm -rf /var/lib/apt/lists/* \
+	&& ln -fs /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
+	&& dpkg-reconfigure --frontend noninteractive tzdata
+
 # ENV SRCDS_FPSMAX=300 \
 # 	SRCDS_TICKRATE=128 \
 # 	SRCDS_PORT=27015 \

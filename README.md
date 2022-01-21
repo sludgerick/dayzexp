@@ -14,6 +14,7 @@ To deploy this container you need to install `docker-compose`.
 echo "STEAMUSERNAME=anonymous" > .env
 echo "PROFILEDIR=profile1" >> .env
 echo "PORT=2302" >> .env
+echo "TIMEZONE=Etc/UTC" >> .env
 
 # copy serverDZ.cfg, messages.xml from else where
 # cp $SRC profile1/serverDZ.cfg
