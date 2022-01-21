@@ -3,13 +3,15 @@ version: "3.9"
 services:
   dayz:
     image: "sludgerick/dayzexp"
+    restart: always
     build:
       context: .
       args:
-        - STEAMUSERNAME="$STEAMUSERNAME"
-        - STEAMPASSWORD="$STEAMPASSWORD"
-        - PROFILEDIR="profile1"
-        - PORT="2302"
+        - STEAMUSERNAME=$STEAMUSERNAME
+        - STEAMPASSWORD=$STEAMPASSWORD
+        - PROFILEDIR=$PROFILEDIR
+        - PORT=$PORT
+        - TIMEZONE=$TIMEZONE
 
     entrypoint: ./entry.sh
     env_file: .env
@@ -27,5 +29,16 @@ services:
         - "36533:36533/tcp"
     # environment:
     volumes:
+      - ./storage:/root/dayzserver-exp/mpmissions/dayzOffline.chernarusplus/storage_1/
+      - ./ban.txt:/root/dayzserver-exp/ban.txt:rw
+      - ./priority.txt:/root/dayzserver-exp/priority.txt:rw
+      - ./whitelist.txt:/root/dayzserver-exp/whitelist.txt:rw
       - ./profile1:/root/profile1:rw
-    restart: on-failure
+      - ./logs:/root/.local/share/DayZ Exp/
+      # - ./core:/root/dayzserver-exp/core:ro
+      # - ./serverfiles:/root/dayzserver-exp
+
+#
+#volumes:
+#  serverfiles:
+#  profile1:
